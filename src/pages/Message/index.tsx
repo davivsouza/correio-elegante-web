@@ -17,7 +17,7 @@ import {
 import { handleData } from "../../services/handleData";
 
 export function Message() {
-  const { user, setDateFormat, dateFormat } = useAuth();
+  const { user } = useAuth();
 
   const [message, setMessage] = useState("");
   const [addressee, setAddressee] = useState("");
@@ -26,7 +26,6 @@ export function Message() {
 
   function handleSubmit(e: FormEvent) {
     e.preventDefault();
-    setDateFormat(handleData())
 
     api.post("/message", {
       name_sender: isAnonymous ? "Anônimo" : user?.name,
