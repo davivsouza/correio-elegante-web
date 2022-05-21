@@ -14,7 +14,6 @@ import {
   MessageTxtArea,
   SubmitMessage,
 } from "./styles";
-import { handleData } from "../../services/handleData";
 
 export function Message() {
   const { user } = useAuth();
@@ -34,7 +33,6 @@ export function Message() {
       message_content: message,
       email_addresse: addressee,
       message_title: assunto,
-      created_at: dateFormat?.date
       
     });
 
