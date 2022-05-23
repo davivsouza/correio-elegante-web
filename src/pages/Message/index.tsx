@@ -1,4 +1,3 @@
-import { Loading } from "../../components/Loading";
 import { FormEvent, useState } from "react";
 import { api } from "../../api/api";
 import { AxiosResponse } from "axios";
