@@ -14,6 +14,7 @@ import {
   MessageTxtArea,
   SubmitMessage,
 } from "./styles";
+import { Loading } from "../../components/Loading";
 
 export function Message() {
   const { user } = useAuth();
@@ -33,10 +34,8 @@ export function Message() {
       message_content: message,
       email_addresse: addressee,
       message_title: assunto,
-      
+      created_at: new Date()
     });
-
-    
   }
 
   function handleCheckAnonymous(e: FormEvent<HTMLInputElement>) {
@@ -52,49 +51,55 @@ export function Message() {
     setAssunto(e.currentTarget.value);
   }
 
-  return (
-    <>
-      <NavbarContainer />
-      <Container>
-        <Strong>Declare seu amor e respeito pra quem você quiser!</Strong>
-        <FormContainer onSubmit={handleSubmit}>
-          <Label htmlFor="assunto">Assunto: </Label>
-          <Input
-            type="text"
-            placeholder="coloque o assunto da mensagem"
-            id="assunto"
-            name="assunto"
-            onChange={handleAssunto}
-          />
-          <Label htmlFor="addressee">Destinatário: </Label>
-          <Input
-            type="text"
-            placeholder="coloque o email do destinatário"
-            id="addressee"
-            name="addressee"
-            onChange={handleAddressee}
-          />
-          <AnonymousCheckbox>
-            <Label className="anonymousLabel" htmlFor="isAnonymous">
-              Enviar como anônimo?
-              <Check
-                type="checkbox"
-                id="isAnonymous"
-                name="isAnonymous"
-                onChange={handleCheckAnonymous}
-              />
-              <span className="checkMark"></span>
-            </Label>
-          </AnonymousCheckbox>
-          <Label htmlFor="message">Escreva sua linda mensagem: </Label>
-          <MessageTxtArea
-            id="message"
-            name="message"
-            onChange={handleMessageTxt}
-          />
-          <SubmitMessage type="submit">Enviar mensagem</SubmitMessage>
-        </FormContainer>
-      </Container>
-    </>
-  );
+  if (!user) {
+    return (
+      <Loading/>
+    );
+  } else {
+    return (
+      <>
+        <NavbarContainer />
+        <Container>
+          <Strong>Declare seu amor e respeito pra quem você quiser!</Strong>
+          <FormContainer onSubmit={handleSubmit}>
+            <Label htmlFor="assunto">Assunto: </Label>
+            <Input
+              type="text"
+              placeholder="coloque o assunto da mensagem"
+              id="assunto"
+              name="assunto"
+              onChange={handleAssunto}
+            />
+            <Label htmlFor="addressee">Destinatário: </Label>
+            <Input
+              type="text"
+              placeholder="coloque o email do destinatário"
+              id="addressee"
+              name="addressee"
+              onChange={handleAddressee}
+            />
+            <AnonymousCheckbox>
+              <Label className="anonymousLabel" htmlFor="isAnonymous">
+                Enviar como anônimo?
+                <Check
+                  type="checkbox"
+                  id="isAnonymous"
+                  name="isAnonymous"
+                  onChange={handleCheckAnonymous}
+                />
+                <span className="checkMark"></span>
+              </Label>
+            </AnonymousCheckbox>
+            <Label htmlFor="message">Escreva sua linda mensagem: </Label>
+            <MessageTxtArea
+              id="message"
+              name="message"
+              onChange={handleMessageTxt}
+            />
+            <SubmitMessage type="submit">Enviar mensagem</SubmitMessage>
+          </FormContainer>
+        </Container>
+      </>
+    );
+  }
 }
