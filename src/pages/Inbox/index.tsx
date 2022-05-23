@@ -1,7 +1,6 @@
 import { useAuth } from "../../hooks/useAuth";
 import { NavbarContainer } from "../../components/Navbar";
 import { InboxMessages } from "./steps/inboxMessages";
-import { Loading } from "../../components/Loading";
 
 export interface InboxRequest {
   email_sender: string;
@@ -14,12 +13,8 @@ export interface InboxRequest {
 }
 
 export function Inbox() {
-  const {user} = useAuth()
 
-  if(!user){
-    return(
-      <Loading/>
-    )}else{
+  
       return (
         <div>
           <NavbarContainer />
@@ -27,5 +22,4 @@ export function Inbox() {
         </div>
       );
     }
-  }
 

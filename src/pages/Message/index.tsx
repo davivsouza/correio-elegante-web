@@ -1,3 +1,4 @@
+import { Loading } from "../../components/Loading";
 import { FormEvent, useState } from "react";
 import { api } from "../../api/api";
 import { AxiosResponse } from "axios";
@@ -14,7 +15,6 @@ import {
   MessageTxtArea,
   SubmitMessage,
 } from "./styles";
-import { Loading } from "../../components/Loading";
 
 export function Message() {
   const { user } = useAuth();
@@ -51,11 +51,7 @@ export function Message() {
     setAssunto(e.currentTarget.value);
   }
 
-  if (!user) {
-    return (
-      <Loading/>
-    );
-  } else {
+
     return (
       <>
         <NavbarContainer />
@@ -102,4 +98,3 @@ export function Message() {
       </>
     );
   }
-}
