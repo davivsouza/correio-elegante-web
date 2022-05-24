@@ -8,6 +8,7 @@ import {
 } from "react";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../services/firebase-config";
+import { Navigate } from "react-router-dom";
 
 type User = {
   name: string | null;
@@ -28,26 +29,6 @@ export const AuthGoogleContext = createContext({} as AuthGoogleContextType);
 export function AuthGoogleProvider({ children }: AuthGoogleProviderProps) {
   const [user, setUser] = useState<User>();
 
-  useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        const { displayName, photoURL, email } = user;
-        if (!displayName || !photoURL) {
-          throw new Error(
-            "Missing authentication information - Incomplete google account!"
-          );
-        }
-        setUser({
-          name: displayName,
-          avatar: photoURL,
-          email: email,
-        });
-      }
-    });
-
-    unsubscribe();
-  }, []);
-
   async function signInGoogle() {
     try {
       const provider = new GoogleAuthProvider();
@@ -58,11 +39,6 @@ export function AuthGoogleProvider({ children }: AuthGoogleProviderProps) {
       if (result) {
         const { displayName, photoURL, email } = result;
 
-        if (!displayName || !photoURL) {
-          throw new Error(
-            "Missing authentication information - Incomplete google account!"
-          );
-        }
         setUser({
           name: displayName,
           avatar: photoURL,
@@ -73,6 +49,8 @@ export function AuthGoogleProvider({ children }: AuthGoogleProviderProps) {
       const errorCode = err.code;
       const errMessage = err.message;
       const email = err.email;
+
+      console.log({ errorCode, errMessage, email });
     }
   }
 

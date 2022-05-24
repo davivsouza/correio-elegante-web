@@ -1,20 +1,103 @@
-import { Container, Logo } from "./styles";
-import logoImg from "../../assets/logo.svg";
-import { Login } from "../../components/Login";
+import { FormEvent, useState } from "react";
+import { api } from "../../api/api";
+import { AxiosResponse } from "axios";
+import { NavbarContainer } from "../../components/Navbar";
 import { useAuth } from "../../hooks/useAuth";
-import { Navigate, useNavigate } from "react-router-dom";
+import {
+  Container,
+  FormContainer,
+  Strong,
+  Label,
+  Input,
+  AnonymousCheckbox,
+  Check,
+  MessageTxtArea,
+  SubmitMessage,
+} from "./styles";
+
 export function Home() {
-  const { user, signInGoogle } = useAuth();
-  let navigate = useNavigate();
-  if (user) {
-    navigate("/messages", { replace: true });
-  } 
+  const { user } = useAuth();
+
+  const [message, setMessage] = useState("");
+  const [addressee, setAddressee] = useState("");
+  const [assunto, setAssunto] = useState("");
+  const [isAnonymous, setIsAnonymous] = useState(false);
+
+  function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+
+    api.post("/message", {
+      name_sender: isAnonymous ? "Anônimo" : user?.name,
+      photoURL_sender: user?.avatar,
+      email_sender: user?.email,
+      message_content: message,
+      email_addresse: addressee,
+      message_title: assunto,
+      created_at: handleDate()
+    });
+  }
+
+  function handleCheckAnonymous(e: FormEvent<HTMLInputElement>) {
+    setIsAnonymous(e.currentTarget.checked);
+  }
+  function handleMessageTxt(e: FormEvent<HTMLTextAreaElement>) {
+    setMessage(e.currentTarget.value);
+  }
+  function handleAddressee(e: FormEvent<HTMLInputElement>) {
+    setAddressee(e.currentTarget.value);
+  }
+  function handleAssunto(e: FormEvent<HTMLInputElement>) {
+    setAssunto(e.currentTarget.value);
+  }
+
+  function handleDate(){
+    const date = new Date()
+    return String(date)
+  }
+
     return (
-      <Container>
-        <Logo src={logoImg} alt="Correio Elegante" width={400} />
-        <p>Bem vindo ao Correio Elegante! Entre para enviar suas cartas </p>
-        <Login />
-      </Container>
+      <>
+        <NavbarContainer />
+        <Container>
+          <Strong>Declare seu amor e respeito pra quem você quiser!</Strong>
+          <FormContainer onSubmit={handleSubmit}>
+            <Label htmlFor="assunto">Assunto: </Label>
+            <Input
+              type="text"
+              placeholder="coloque o assunto da mensagem"
+              id="assunto"
+              name="assunto"
+              onChange={handleAssunto}
+            />
+            <Label htmlFor="addressee">Destinatário: </Label>
+            <Input
+              type="text"
+              placeholder="coloque o email do destinatário"
+              id="addressee"
+              name="addressee"
+              onChange={handleAddressee}
+            />
+            <AnonymousCheckbox>
+              <Label className="anonymousLabel" htmlFor="isAnonymous">
+                Enviar como anônimo?
+                <Check
+                  type="checkbox"
+                  id="isAnonymous"
+                  name="isAnonymous"
+                  onChange={handleCheckAnonymous}
+                />
+                <span className="checkMark"></span>
+              </Label>
+            </AnonymousCheckbox>
+            <Label htmlFor="message">Escreva sua linda mensagem: </Label>
+            <MessageTxtArea
+              id="message"
+              name="message"
+              onChange={handleMessageTxt}
+            />
+            <SubmitMessage type="submit">Enviar mensagem</SubmitMessage>
+          </FormContainer>
+        </Container>
+      </>
     );
-  
-}
+  }
