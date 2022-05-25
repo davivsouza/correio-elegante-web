@@ -32,4 +32,14 @@ export const LoginGoogle = styled.button<LoginButtonProps>`
     height: 24px;
     background-image: url(${(props) => props.bgImg});
   }
+
+  @media screen and (max-width:768px){
+    width: 40%;
+  }
+  @media screen and (max-width:425px){
+    width: 70%;
+  }
+  @media screen and (max-width: 320px){
+    width:90%;
+  }
 `;
