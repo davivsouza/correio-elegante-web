@@ -1,8 +1,6 @@
 import { AuthGoogleProvider } from "./contexts/AuthGoogle";
-import { BrowserRouter } from "react-router-dom";
-
-import { Footer } from "./components/Footer";
 import { GlobalStyle } from "./styles/global";
+import { BrowserRouter } from "react-router-dom";
 import { Router } from "./routes/routes";
 
 export function App() {
@@ -11,7 +9,6 @@ export function App() {
       <BrowserRouter>
         <GlobalStyle />
         <Router />
-        <Footer />
       </BrowserRouter>
     </AuthGoogleProvider>
   );
