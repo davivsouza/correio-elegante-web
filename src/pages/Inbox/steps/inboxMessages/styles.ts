@@ -50,3 +50,15 @@ export const Message = styled.div`
     text-overflow: ellipsis;
   }
 `;
+
+export const ThereNoMessages = styled.div`
+  height: 40vh;
+  display: flex;
+  align-items: center;
+  justify-content:center ;
+  h3 {
+    font-family: "Poppins", sans-serif;
+
+    text-align: center;
+  }
+`;

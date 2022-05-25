@@ -12,13 +12,10 @@ export interface InboxRequest {
 }
 
 export function Inbox() {
-
-  
-      return (
-        <div>
-          <NavbarContainer />
-          <InboxMessages />
-        </div>
-      );
-    }
-
+  return (
+    <div>
+      <NavbarContainer />
+      <InboxMessages />
+    </div>
+  );
+}
