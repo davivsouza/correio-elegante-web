@@ -19,6 +19,15 @@ export const Aside = styled.aside`
     font-family: "Poppins", sans-serif;
     color: #f87d92;
     font-weight: 400;
+
+    @media screen and (max-width:768px){
+    font-size: 0.938rem;
+  }
+  }
+
+  @media screen and (max-width:768px){
+    width: auto;
+    padding: 0.8rem 1rem;
   }
 `;
 
@@ -41,6 +50,7 @@ export const Message = styled.div`
   p {
     font-size: 0.8rem;
     font-family: "Inter", sans-serif;
+    
   }
 
   p {
