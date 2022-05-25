@@ -6,6 +6,10 @@ export const Nav = styled.nav`
   align-items: center;
 
   padding: 0.8rem 10% 0;
+
+  @media screen and (max-width: 425px) {
+    padding: 10px 0;
+  }
 `;
 
 export const Li = styled.li`
@@ -15,6 +19,12 @@ export const Li = styled.li`
 
   p {
     font-family: "Poppins", sans-serif;
+    @media screen and (max-width: 425px) {
+      font-size: 0.938rem;
+    }
+    @media screen and (max-width: 425px) {
+      font-size: 0.8rem;
+    }
   }
 
   &.user {
@@ -26,6 +36,11 @@ export const Li = styled.li`
       }
     }
   }
+
+  @media screen and (max-width: 425px) {
+    gap: 10px;
+    padding-right: 10px;
+  }
 `;
 
 export const Img = styled.img`
@@ -34,9 +49,22 @@ export const Img = styled.img`
 
   border-radius: 50%;
 
+  &.logo {
+    @media screen and (max-width: 425px) {
+      width: 200px;
+    }
+    @media screen and (max-width: 320px) {
+      width: 150px;
+    }
+  }
+
+  &.userAvatar {
+    @media screen and (max-width: 425px) {
+      width: 35px;
+      height: 35px;
+    }
+  }
   &.inbox {
     cursor: pointer;
-
-    
   }
 `;

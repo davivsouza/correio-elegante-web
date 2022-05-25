@@ -17,14 +17,24 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  @media screen and (max-width: 768px) {
+    width: 70%;
+  }
+  @media screen and (max-width: 425px) {
+    width: 100%;
+  }
 `;
 
 export const Strong = styled.strong`
   font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
+  font-size: clamp(0.938rem, 1.5vw, 1.2rem);
 
   margin-top: 50px;
-  align-self: center;
+  text-align: center;
+  @media screen and (max-width: 425px) {
+    padding: 10px;
+  }
 `;
 export const Label = styled.label`
   font-family: "Poppins", sans-serif;
@@ -38,6 +48,10 @@ export const Label = styled.label`
 
   &.anonymousLabel {
     padding-left: 25px;
+  }
+
+  @media screen and (max-width: 425px) {
+    font-size: 0.938rem;
   }
 `;
 
@@ -53,6 +67,9 @@ export const Input = styled.input`
     font-family: "Poppins", sans-serif;
     font-size: 1rem;
     color: #b6b2b2;
+    @media screen and (max-width: 425px) {
+      font-size: 0.938rem;
+    }
   }
 `;
 
@@ -121,8 +138,8 @@ export const MessageTxtArea = styled.textarea`
 export const SubmitMessage = styled.button`
   width: 100%;
 
-  border: 1px solid #F87D92;
-  color: #F87D92;
+  border: 1px solid #f87d92;
+  color: #f87d92;
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -132,10 +149,10 @@ export const SubmitMessage = styled.button`
   padding: 0.563rem 1.875rem;
   cursor: pointer;
 
-  transition: all .2s ease;
+  transition: all 0.2s ease;
 
-  :hover{
-    background: #F87D92;
-    color: #FFF;
+  :hover {
+    background: #f87d92;
+    color: #fff;
   }
 `;

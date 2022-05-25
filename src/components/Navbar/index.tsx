@@ -11,7 +11,7 @@ export function NavbarContainer() {
     <Nav>
       <Li>
         <Link to="/messages">
-          <Img width={300} src={logo} alt="Correio Elegante" />
+          <Img width={300} src={logo} alt="Correio Elegante" className="logo"/>
         </Link>
       </Li>
       <Li className="user">
@@ -28,6 +28,7 @@ export function NavbarContainer() {
         <Img
           width={40}
           height={40}
+          className="userAvatar"
           src={`${user?.avatar}`}
           alt={`${user?.name}`}
         />
