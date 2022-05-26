@@ -31,6 +31,7 @@ export const Container = styled.div<IsSelectedMessage>`
   .arrowBack{
     width: 20px;
     height: 20px;
+    cursor: pointer;
   }
 `;
 
@@ -54,18 +55,28 @@ export const Sender = styled.div`
     @media screen and (max-width: 1024px) {
       font-size: 0.938rem;
     }
+    @media screen and (max-width: 320px) {
+      font-size: 0.75rem;
+    }
   }
   span {
     font-family: "Inter", sans-serif;
     font-size: 0.8rem;
     color: #b6b2b2;
-
+    @media screen and (max-width: 320px) {
+      font-size: 0.75rem;
+    }
   }
 
   p {
     font-family: "Inter", sans-serif;
     font-size: 0.8rem;
+    @media screen and (max-width: 320px) {
+      font-size: 0.75rem;
+    }
   }
+
+  
 `;
 export const MessageText = styled.p`
   font-family: "Inter", sans-serif;
@@ -74,5 +85,9 @@ export const MessageText = styled.p`
 
   @media screen and (max-width: 1024px) {
       font-size: 0.8rem;
+    }
+
+    @media screen and (max-width: 320px) {
+      font-size: 0.75rem;
     }
 `;

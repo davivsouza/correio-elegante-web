@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { InboxRequest } from "../..";
 import { Container, MessageText, Sender } from "./styles";
-import {ArrowLeft} from 'phosphor-react'
+import {X} from 'phosphor-react'
 
 interface InboxSelectedMessageProps {
   isSelect: boolean;
@@ -29,7 +29,7 @@ export function InboxSelectedMessage({
     <Container isSelect={isSelect}>
       {isSelect && (
         <>
-        <ArrowLeft onClick={()=> {onSelect(false)}} className="arrowBack"/>
+        <X onClick={()=> {onSelect(false)}} className="arrowBack"/>
           <h2>{messageSelected?.message_title}</h2>
           <Sender>
             {messageSelected?.name_sender === "Anônimo" ? (
@@ -52,7 +52,7 @@ export function InboxSelectedMessage({
               </span>
 
             </strong>
-            <p>{messageSelected?.created_at} </p>
+            <p>{messageSelected?.created_at.slice(4,21)} </p>
           </Sender>
           <MessageText>{messageSelected?.message_content}</MessageText>
         </>
