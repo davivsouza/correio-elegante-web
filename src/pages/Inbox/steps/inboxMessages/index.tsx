@@ -23,6 +23,7 @@ export function InboxMessages() {
         setIsThereMessages(false);
       } else {
         setIsThereMessages(true);
+
       }
 
       setInbox(result.reverse());
@@ -39,7 +40,7 @@ export function InboxMessages() {
     <>
       {isThereMessages ? (
         <InboxMessagesContainer>
-          <Aside>
+          <Aside isSelected={isSelected}>
             <h3>Mensagem recebidas</h3>
             {inbox?.map((message, idx) => (
               <Message key={idx} onClick={() => handleSelectedMessage(idx)}>
@@ -52,6 +53,7 @@ export function InboxMessages() {
             message={inbox}
             messageIdx={messageIdx}
             isSelect={isSelected}
+            onSelect={setIsSelected}
           />
         </InboxMessagesContainer>
       ) : (

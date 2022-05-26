@@ -1,22 +1,24 @@
 import { useEffect, useState } from "react";
 import { InboxRequest } from "../..";
 import { Container, MessageText, Sender } from "./styles";
+import {ArrowLeft} from 'phosphor-react'
 
 interface InboxSelectedMessageProps {
   isSelect: boolean;
   messageIdx: number;
   message: InboxRequest[] | undefined;
+  onSelect: (data:boolean)=>void;
 }
 
 export function InboxSelectedMessage({
   isSelect,
   messageIdx,
   message,
+  onSelect
 }: InboxSelectedMessageProps) {
   const [messageSelected, setMessageSelected] = useState<InboxRequest>();
   
   useEffect(() => {
-    console.log(message);
     
     setMessageSelected(message?.find((m, idx) => idx === messageIdx));
     
@@ -24,9 +26,10 @@ export function InboxSelectedMessage({
   }, [messageIdx]);
   
   return (
-    <Container>
+    <Container isSelect={isSelect}>
       {isSelect && (
         <>
+        <ArrowLeft onClick={()=> {onSelect(false)}} className="arrowBack"/>
           <h2>{messageSelected?.message_title}</h2>
           <Sender>
             {messageSelected?.name_sender === "Anônimo" ? (

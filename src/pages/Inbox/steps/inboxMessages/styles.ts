@@ -1,10 +1,16 @@
 import styled from "styled-components";
+
+export interface SelectedMessageProps {
+  isSelected?: boolean;
+}
+
 export const InboxMessagesContainer = styled.div`
   display: flex;
   align-items: center;
   gap: 2.5rem;
 `;
-export const Aside = styled.aside`
+
+export const Aside = styled.aside<SelectedMessageProps>`
   width: 30%;
   display: flex;
   flex-direction: column;
@@ -19,15 +25,21 @@ export const Aside = styled.aside`
     font-family: "Poppins", sans-serif;
     color: #f87d92;
     font-weight: 400;
+    padding-left: 0.5rem;
 
-    @media screen and (max-width:768px){
-    font-size: 0.938rem;
-  }
+    @media screen and (max-width: 1024px) {
+      font-size: 0.938rem;
+    }
   }
 
-  @media screen and (max-width:768px){
-    width: auto;
-    padding: 0.8rem 1rem;
+  @media screen and (max-width: 1024px) {
+    width: 30%;
+    padding: 0.5rem;
+  }
+
+  @media screen and (max-width: 425px) {
+    width: 100%;
+    display: ${(props)=> props.isSelected ? "none" : "flex"};
   }
 `;
 
@@ -48,9 +60,8 @@ export const Message = styled.div`
   }
   strong,
   p {
-    font-size: 0.8rem;
+    font-size: clamp(0.75rem, 1vw, 0.8rem);
     font-family: "Inter", sans-serif;
-    
   }
 
   p {
@@ -59,13 +70,17 @@ export const Message = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  @media screen and (max-width: 1024px) {
+    padding: 0.5rem 0.8rem;
+  }
 `;
 
 export const ThereNoMessages = styled.div`
   height: 40vh;
   display: flex;
   align-items: center;
-  justify-content:center ;
+  justify-content: center;
   h3 {
     font-family: "Poppins", sans-serif;
 
