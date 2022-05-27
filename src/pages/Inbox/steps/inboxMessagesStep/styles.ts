@@ -17,7 +17,7 @@ export const Aside = styled.aside<SelectedMessageProps>`
   flex-direction: column;
   gap: 12px;
 
-  overflow-y:scroll ;
+ 
 
   margin-top: 20px;
   padding: 2.5rem 1.2rem 2.5rem 11.375rem;
