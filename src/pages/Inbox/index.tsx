@@ -1,5 +1,5 @@
 import { NavbarContainer } from "../../components/Navbar";
-import { InboxMessages } from "./steps/inboxMessages";
+import { InboxMessages } from "./steps/inboxMessagesStep";
 
 export interface InboxRequest {
   email_sender: string;

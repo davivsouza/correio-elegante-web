@@ -1,5 +1,7 @@
 import styled from "styled-components";
-
+interface HomeProps {
+  messageSent: boolean;
+}
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -135,16 +137,20 @@ export const MessageTxtArea = styled.textarea`
   font-size: 0.8rem;
 `;
 
-export const SubmitMessage = styled.button`
+export const SubmitMessage = styled.button<HomeProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   width: 100%;
 
-  border: 1px solid #f87d92;
-  color: #f87d92;
+  border: 1px solid ${(props) => (props.messageSent ? "#38b000" : "#f87d92")};
+  color: ${(props) => (props.messageSent ? "#fff" : "#f87d92")};
 
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
 
-  background: none;
+  background: ${(props) => (props.messageSent ? "#38b000" : "none")};
 
   padding: 0.563rem 1.875rem;
   cursor: pointer;
@@ -152,7 +158,14 @@ export const SubmitMessage = styled.button`
   transition: all 0.2s ease;
 
   :hover {
-    background: #f87d92;
+    background: ${(props) => (props.messageSent ? "#38b000" : "#f87d92")};
     color: #fff;
   }
+
+  svg{
+    width:30px ;
+    height: 30px;
+  }
 `;
+
+
