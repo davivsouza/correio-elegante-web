@@ -41,7 +41,7 @@ Desenvolver um site que simula um correio elegante, onde o usuário possa enviar
 - [x] Inbox para ver as mensagens recebidas de outras usuários.
 - [x] Responsividade.
 
-Link do site [neste link](https://correio-elegante-web.vercel.app/)
+Link para testes e uso do site [neste link](https://correio-elegante-web.vercel.app/)
 
 
 <h3 id="pre-req">Pré-requisitos</h3>
