@@ -6,7 +6,7 @@
 </p>
 
 <h1 align="center">Correio Elegante</h1>
-<p align="center">🚀Projeto que simula um correio elegante feito junto com <a href="https://github.com/VictorRocha-dev">Victor Souza Rocha</a>.</p>
+<p align="center">🚀Projeto que simula um correio elegante feito junto com <a href="https://github.com/VictorRocha-dev" target="_blank">Victor Souza Rocha</a>.</p>
 
 <div align="center">
   <img  src="https://img.shields.io/github/issues/davivsouza/correio-elegante-web"/>
